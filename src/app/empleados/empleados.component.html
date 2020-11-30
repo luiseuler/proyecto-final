@@ -1,0 +1,219 @@
+<app-paginas></app-paginas>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>Registrar trabajador</h5>
+                    <br>
+                    <div class="row text-center">
+                        
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-user"></i></div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Nombre de usuario"
+                                [(ngModel)]="nuevoUser.usuario">
+                        </div>
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-calendar-week"></i></div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="fecha de registro"
+                                [(ngModel)]="nuevoUser.fecha_registro">
+                        </div>
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-tint"></i></div>
+                            </div>
+                            <input type="text" class="form-control" id="t_sangre" placeholder="Tipo de sangre"
+                                [(ngModel)]="nuevoUser.tipo_sangre">
+                        </div>
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-user-friends"></i></div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Estado civil"
+                                [(ngModel)]="nuevoUser.estado_civil">
+                        </div>
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-phone-alt"></i></div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Celular"
+                                [(ngModel)]="nuevoUser.telefono">
+                        </div>
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-directions"></i></div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Direccion"
+                                [(ngModel)]="nuevoUser.direccion">
+                        </div>
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Correo" [(ngModel)]="nuevoUser.email">
+                        </div>
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-unlock"></i></div>
+                            </div>
+                            <input type="password" class="form-control" placeholder="Contraseña"
+                                [(ngModel)]="nuevoUser.pass">
+                        </div>
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-users"></i></div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Tipo de usuario"
+                                [(ngModel)]="nuevoUser.tipo">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary" id="entrar" 
+                    (click)="agregarUsuario()">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of users">
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.usuario}}</td>
+                <td>{{usuario.tipo}}</td>
+                <td>{{usuario.telefono}}</td>
+                <td class="text-right">
+                    <button class="btn btn-primary btn-sm" *ngIf="level=='A'" data-toggle='modal'
+                            (click)="temporalTema(usuario)" data-target='#modalEditar'><i class="fas fa-pen"></i></button>
+                            <!--(click)="temporalTema(tema)"-->
+                            &nbsp;
+                    <button class="btn btn-danger btn-sm" *ngIf="level=='A'" data-toggle='modal'
+                        (click)="temporalTema(usuario)" data-target='#modalEliminar'>Despedir</button>
+                    <!--(click)="temporalTema(tema)"-->
+                    
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modificar Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Usuario:</div>
+                    </div>
+                    <input type="text" class="form-control" id="idTemaEditar" placeholder="Id del tema"
+                        [(ngModel)]="tmpUser.usuario" disabled>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Fecha de registro:</div>
+                    </div>
+                    <input type="text" class="form-control" [(ngModel)]="tmpUser.fecha_registro">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Tipo de sangre:</div>
+                    </div>
+                    <input type="text" class="form-control" [(ngModel)]="tmpUser.tipo_sangre">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Estado civil:</div>
+                    </div>
+                    <input type="text" class="form-control" [(ngModel)]="tmpUser.estado_civil">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Telefono:</div>
+                    </div>
+                    <input type="text" class="form-control" [(ngModel)]="tmpUser.telefono">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Direccion:</div>
+                    </div>
+                    <input type="text" class="form-control" [(ngModel)]="tmpUser.direccion">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Email:</div>
+                    </div>
+                    <input type="text" class="form-control" [(ngModel)]="tmpUser.email">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Contraseña:</div>
+                    </div>
+                    <input type="password" class="form-control" [(ngModel)]="tmpUser.pass">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Tipo:</div>
+                    </div>
+                    <select class="form-control" id="nombreTema1Ediatr" [(ngModel)]="tmpUser.tipo">
+                        <option value="A">Administrador</option>
+                        <option value="U">Usuario</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                (click)="guardarCambios()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Para Eliminar -->
+<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Eliminar el Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Esta seguro que quiere eliminar el Usuario {{tmpUser.usuario}}?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="confirmarEliminar()">Si</button>
+            </div>
+        </div>
+    </div>
+</div>

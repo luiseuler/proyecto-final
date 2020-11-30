@@ -1,0 +1,82 @@
+<app-paginas></app-paginas>
+<div class="container">
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                   Registrar  trabajador
+                </div>
+                <div class="card-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Nombre:</div>
+                        </div>
+                        <input type="text" class="form-control" id="id" placeholder="Nombre del trabajador"
+                        [(ngModel)]="nuevoUsuario.usuario">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Fecha de registro:</div>
+                        </div>
+                        <input type="text" class="form-control" id="fecha" placeholder="Fecha"
+                        [(ngModel)]="nuevoUsuario.fecha_registro">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Tipo de sangre:</div>
+                        </div>
+                        <input type="text" class="form-control" id="t_sangre" placeholder="Sangre"
+                        [(ngModel)]="nuevoUsuario.tipo_sangre">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Estado civil:</div>
+                        </div>
+                        <input type="text" class="form-control"  placeholder="Estado civil"
+                        [(ngModel)]="nuevoUsuario.estado_civil">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Telefono:</div>
+                        </div>
+                        <input type="text" class="form-control"  placeholder="Celular"
+                        [(ngModel)]="nuevoUsuario.telefono">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Direccion:</div>
+                        </div>
+                        <input type="text" class="form-control"  placeholder="Direccion"
+                        [(ngModel)]="nuevoUsuario.direccion">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Email:</div>
+                        </div>
+                        <input type="text" class="form-control"  placeholder="Correo"
+                        [(ngModel)]="nuevoUsuario.email">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Contraseña:</div>
+                        </div>
+                        <input type="password" class="form-control"  placeholder="Contraseña"
+                        [(ngModel)]="nuevoUsuario.pass">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Tipo:</div>
+                        </div>
+                        <input type="text" class="form-control"  placeholder="Tipo usuario"
+                        [(ngModel)]="nuevoUsuario.tipo">
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button type="button" class="btn btn-primary" id="entrar" >Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
